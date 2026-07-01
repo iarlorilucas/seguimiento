@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Estado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .contenedor {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #btnConsultar {
+            background: #007BFF;
+            color: white;
+        }
+
+        #btnConsultar:hover {
+            background: #0056b3;
+        }
+
+        #respuesta {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .mensaje {
+            padding: 15px;
+            border-radius: 5px;
+            background: #e9f7ef;
+            color: #155724;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        #btnAceptar {
+            background: #28a745;
+            color: white;
+        }
+
+        #btnAceptar:hover {
+            background: #218838;
+        }
+
+        #btnNuevaBusqueda {
+            background: #6c757d;
+            color: white;
+        }
+
+        #btnNuevaBusqueda:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Consulta de Estado</h2>
+
+    <div id="formulario">
+
+        <label for="color">Elegí el color del parte</label>
+        <select id="color">
+            <option value="">-- Seleccioná una opción --</option>
+            <option>Parte rojo</option>
+            <option>Parte verde</option>
+            <option>Parte amarillo</option>
+            <option>Parte blanco</option>
+        </select>
+
+        <label for="codigo">Introducí el código de seguimiento de 10 dígitos</label>
+        <input
+            type="text"
+            id="codigo"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            placeholder="Ej.: 1234567890"
+        >
+
+        <button id="btnConsultar" onclick="consultar()">Consultar</button>
+
+    </div>
+
+    <div id="respuesta">
+        <div class="mensaje">
+            En proceso de intervención.
+        </div>
+
+        <button id="btnAceptar" onclick="aceptar()">Aceptar</button>
+        <button id="btnNuevaBusqueda" onclick="nuevaBusqueda()">Nueva búsqueda</button>
+    </div>
+
+</div>
+
+<script>
+function consultar() {
+    document.getElementById("formulario").style.display = "none";
+    document.getElementById("respuesta").style.display = "block";
+}
+
+function aceptar() {
+    alert("Consulta finalizada.");
+}
+
+function nuevaBusqueda() {
+    document.getElementById("color").selectedIndex = 0;
+    document.getElementById("codigo").value = "";
+
+    document.getElementById("respuesta").style.display = "none";
+    document.getElementById("formulario").style.display = "block";
+
+    document.getElementById("codigo").focus();
+}
+</script>
+
+</body>
+</html>
